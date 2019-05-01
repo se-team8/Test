@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" mrc="zh-cn">
+<meta http-equiv="Content-Type" mrc="text/html; charset=gb2312">
+
+<title>pet suggestion</title>
+
+<script type="text/JavaScript">
+function disp_alert1()
+{
+alert("meow！");
+}
+function disp_alert2()
+{
+alert("bark！");
+}
+function disp_alert3()
+{
+alert("gulps！");
+}
+function disp_alert4()
+{
+alert("roars！");
+}
+function scorequiz(){
+ //alert("test");
+ var max;
+ var result="";
+ var animals = [0,0,0,0];
+     /*animals[0] counts the score of cat
+      animals[1] counts the score of dog
+	  animals[2] counts the score of fish
+	  animals[3] counts the score of lion*/
+ var number = 0;
+	  
+ var select_q1y=document.getElementById("Q1_1");
+ var select_q1n=document.getElementById("Q1_2");
+ var select_q2y=document.getElementById("Q2_1");
+ var select_q2n=document.getElementById("Q2_2");
+ var select_q3y=document.getElementById("Q3_1");
+ var select_q3n=document.getElementById("Q3_2");
+ if(select_q1n.checked||select_q1y.checked){number++;}
+ if(select_q2n.checked||select_q2y.checked){number++;}
+ if(select_q3n.checked||select_q3y.checked){number++;}
+ 
+ if(number!=3){alert("Please answer all of the question!");}
+ else{
+ //if the user has a big garden,add score to dog and lion.
+ if (select_q1y.checked){
+   animals[1]+=1;
+   animals[3]+=1;
+ } 
+ //if the user does not have a big garden, add score to cat and fish.
+ if(select_q1n.checked){
+   animals[0]+=1; 
+   animals[2]+=1;
+ }
+ //if the user has a swim pool, add score to dog and fish.
+ if (select_q2y.checked){
+    animals[1]+=1;
+	animals[2]+=1;
+ }
+ //if the user dose not have a swim pool, add score to cat and lion.
+if(select_q2n.checked){
+     animals[0]+=1;
+	 animals[3]+=1;
+	 }
+	// if the user prefers adventure, add score to dog and lion.
+ if(select_q3y.checked){
+  animals[1]+=1;
+  animals[3]+=1;
+ } 
+  // if the user prefers comfort, add score to cat and fish.
+ if(select_q3n.checked){
+   animals[0]+=1;
+   animals[2]+=1;
+ }
+ //count the max score for animals.
+ max=Math.max.apply(null,animals);
+
+if(animals[0]==max){result+="cat ";} 
+if(animals[1]==max){result+="dog ";}
+if(animals[2]==max){result+="fish ";}
+if(animals[3]==max){result+="lion ";}
+
+  alert(result);
+}
+}
+
+/*
+
+for (var i=0;i<3;i++){
+  var max;
+ if {
+    animals[i]>=animals[i+1];
+    max = animals[i];
+ }else{
+    max = animals[i+1];
+ }
+   return max;
+}*/
+
+</script>
+</head>
+
+<body>
+
+<h1>What noise the animal makes:</h1>
+<input type="button" onclick="disp_alert1()" value="cat" />
+<input type="button" onclick="disp_alert2()" value="dog" />
+<input type="button" onclick="disp_alert3()" value="fish" />
+<input type="button" onclick="disp_alert4()" value="lion" />
+<br>
+<br>
+<br>
+<table width="75%" border="0" align="center">
+  <tr>
+    <td> 
+       <h1>Pet suggestion</h1>
+        <hr>
+         Q1.Do you have a big garden? 
+        <ol>
+          <input type="radio" name="Q1" value="yes" id="Q1_1">
+          Yes
+          <input type="radio" name="Q1" value="no" id="Q1_2">
+          No
+        </ol> 
+        Q2.Do you have a swim pool?
+        <ol>
+          <input type="radio" name="Q2" value="yes" id="Q2_1">
+          Yes
+          <input type="radio" name="Q2" value="no" id="Q2_2">
+          No
+        </ol>
+        Q3.Do you prefer adventure or comfort?
+        <ol>
+          <input type="radio" name="Q3" value="adventure" id="Q3_1">
+          Adventure
+          <input type="radio" name="Q3" value="comfort" id="Q3_2">
+          Comfort
+        </ol>
+        <hr>
+        <input type="button" id="submit" value="submit" onClick=scorequiz() />
+		<div></div>
+		
+		
+		<script>
+		/*
+		 var numberOfQuestion = 0;
+        $(document).ready(function(){
+		$("input").change(function(){
+		numberOfQuestion++;
+		}))
+		*/
+		</script>
+</body>
+</html>
+
